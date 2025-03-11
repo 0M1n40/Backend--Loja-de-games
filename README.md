@@ -8,7 +8,14 @@ Este projeto é um sistema backend para uma loja de games, permitindo o gerencia
 
 - **Backend:** Java com Spring Boot  
 - **Banco de Dados:** MySQL  
-- **Gerenciamento de Dependências:** Maven  
+- **Gerenciamento de Dependências:** Maven
+
+  ### 1️⃣ Pré-requisitos:
+
+- Java 17+  
+- Spring Boot  
+- MySQL  
+- Maven  
 
 ## 📂 Estrutura do Projeto
 
@@ -38,12 +45,70 @@ A principal entidade do sistema é **Produto**, que contém os seguintes atribut
 
 ## 🚀 Como Executar o Projeto
 
-### 1️⃣ Pré-requisitos:
+- JSON para teste no Insominia
+- **Classes**
+  ```sh
+  [
+  {
+    "nome": "Ação",
+    "descricao": "Jogos repletos de adrenalina e combates intensos."
+  },
+  {
+    "nome": "RPG",
+    "descricao": "Jogos de RPG com histórias envolventes e escolhas impactantes."
+  },
+  {
+    "nome": "Corrida",
+    "descricao": "Velocidade e emoção em competições eletrizantes."
+  },
+  {
+    "nome": "Esportes",
+    "descricao": "Simuladores de esportes para os fãs de competições."
+  }
+  ]
+- **Produtos**
 
-- Java 17+  
-- Spring Boot  
-- MySQL  
-- Maven  
+  ```sh
+  [
+  {
+    "nome": "CyberWarrior",
+    "descricao": "Um jogo de ação futurista com combates intensos.",
+    "valor": 199.90,
+    "faixaEtaria": "18",
+    "classe": {
+      "id": 1
+    }
+  },
+  {
+    "nome": "Legends of Eldoria",
+    "descricao": "RPG épico com mundo aberto e escolhas impactantes.",
+    "valor": 249.90,
+    "faixaEtaria": "14",
+    "classe": {
+      "id": 2
+    }
+  },
+  {
+    "nome": "Speed Legends",
+    "descricao": "Corridas de alta velocidade com gráficos realistas.",
+    "valor": 179.90,
+    "faixaEtaria": "10",
+    "classe": {
+      "id": 3
+    }
+  },
+  {
+    "nome": "Ultimate Soccer",
+    "descricao": "Futebol com jogabilidade realista e multiplayer online.",
+    "valor": 199.90,
+    "faixaEtaria": "0",
+    "classe": {
+      "id": 4
+    }
+  }
+  ]
+
+
 
 ### 2️⃣ Clonando o Repositório:
 
