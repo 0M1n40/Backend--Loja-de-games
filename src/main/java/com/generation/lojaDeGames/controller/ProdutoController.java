@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+//import com.generation.lojaDeGames.model.Classe;
 import com.generation.lojaDeGames.model.Produto;
 import com.generation.lojaDeGames.repository.ClasseRepository;
 import com.generation.lojaDeGames.repository.ProdutoRepository;
@@ -52,8 +53,25 @@ public class ProdutoController {
 				.findAllByNomeContainingIgnoreCase(nome));
 
 	}
+	
+	
+	
+	
+	@PostMapping // metodo para insirir mais objetos de uma vez para consulta mais dinamica
+	public ResponseEntity<List<Produto>> post(@Valid @RequestBody List<Produto> produtos) {
+	    for (Produto produto : produtos) {
+	        if (!classeRepository.existsById(produto.getClasse().getId())) {
+	            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Classe não encontrada!", null);
+	        }
+	    }
+	    List<Produto> produtosSalvos = produtoRepository.saveAll(produtos);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(produtosSalvos);
+	}
 
-	@PostMapping
+	
+	
+	//TIRAR O COMENT DO IMPORT PARA FUNCIONAR
+/*	@PostMapping
 	public ResponseEntity<Produto> post (@Valid @RequestBody Produto produto) {
 
 		if (classeRepository.existsById(produto.getClasse().getId()))
@@ -63,6 +81,8 @@ public class ProdutoController {
 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Classe não encontrada!", null);
 
 	}
+	*/
+	
 	@PutMapping
 	public ResponseEntity<Produto> put (@Valid @RequestBody Produto produto) {
 		if (produtoRepository.existsById(produto.getId())) {

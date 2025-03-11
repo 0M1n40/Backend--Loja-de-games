@@ -48,11 +48,20 @@ public class ClasseController {
 				.findAllByNomeContainingIgnoreCase(nome));
 	}
 
-	@PostMapping
-	public ResponseEntity<Classe> post(@Valid @RequestBody Classe classe) {
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(classeRepository.save(classe));
+	
+	//@PostMapping // com esse metodo eu consido cadastrar apenas um objeto de cada vez
+	//public ResponseEntity<Classe> post(@Valid @RequestBody Classe classe) {
+	//	return ResponseEntity.status(HttpStatus.CREATED)
+	//			.body(classeRepository.save(classe));
+	//}
+	
+	
+	@PostMapping //metodo permite criar varias classes ao mesmo tempo usando array
+	public ResponseEntity<List<Classe>> cadastrarVariasClasses(@RequestBody List<Classe> classes) {
+	    List<Classe> classesSalvas = classeRepository.saveAll(classes);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(classesSalvas);
 	}
+
 
 	@PutMapping
 	public ResponseEntity<Classe> put(@Valid @RequestBody Classe classe) {
